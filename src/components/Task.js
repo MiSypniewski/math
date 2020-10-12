@@ -39,8 +39,9 @@ const ColorWrapper = styled.div`
   box-shadow: inset 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
 `;
 
-function Task({ task, checkAnswer, lastAnswer, setLastAnswer }) {
+function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer }) {
   const [isVisibleModal, setVisibleModal] = useState(false);
+  const [cuurentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
     if (lastAnswer) {
@@ -56,7 +57,7 @@ function Task({ task, checkAnswer, lastAnswer, setLastAnswer }) {
 
   return (
     <>
-      <ProgressBar />
+      {useTimer !== 0 ? <ProgressBar time={useTimer} /> : null}
       {isVisibleModal ? (
         <ColorWrapper lastAnswer={lastAnswer}>{lastAnswer}</ColorWrapper>
       ) : (

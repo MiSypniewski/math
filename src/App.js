@@ -9,6 +9,7 @@ import { generateTasks } from "./logic/TaskGenerator";
 function App() {
   const [display, setDisplay] = useState("main");
   const [currentTask, setCurrentTask] = useState(0);
+  const [useTimer, setTimer] = useState(15);
   const [lastAnswer, setLastAnswer] = useState("");
   const [countCorrectAnswer, setCountCorrectAnswer] = useState(0);
   const [countWrongAnswer, setCountWrongAnswer] = useState(0);
@@ -50,6 +51,7 @@ function App() {
             countWrongAnswer={countWrongAnswer}
             checkAnswer={checkAnswer}
             changePage={changePage}
+            useTimer={useTimer}
           />
         ) : null}
       </ThemeProvider>

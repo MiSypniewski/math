@@ -12,6 +12,7 @@ function Tasks({
   countWrongAnswer,
   lastAnswer,
   setLastAnswer,
+  useTimer,
 }) {
   return (
     <>
@@ -23,6 +24,7 @@ function Tasks({
           checkAnswer={checkAnswer}
           lastAnswer={lastAnswer}
           setLastAnswer={setLastAnswer}
+          useTimer={useTimer}
         />
       ) : (
         <CurrentResult
