@@ -39,9 +39,9 @@ const ColorWrapper = styled.div`
   box-shadow: inset 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
 `;
 
-function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer }) {
+function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0 }) {
   const [isVisibleModal, setVisibleModal] = useState(false);
-  const [cuurentTime, setCurrentTime] = useState(0);
+  const [remainingTime, setRemainingTime] = useState(useTimer);
 
   useEffect(() => {
     if (lastAnswer) {
@@ -55,9 +55,20 @@ function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer }) {
     }
   });
 
+  useEffect(() => {
+    const intervalId = setInterval(() => setRemainingTime((prev) => prev - 1), 100);
+    if (useTimer === 0) return clearInterval(intervalId);
+    if (remainingTime <= 0) {
+      checkAnswer("overtime", task.c);
+      return clearInterval(intervalId);
+    }
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [remainingTime]);
   return (
     <>
-      {useTimer !== 0 ? <ProgressBar time={useTimer} /> : null}
+      {useTimer !== 0 ? <ProgressBar remainingTime={remainingTime} useTimer={useTimer} /> : null}
       {isVisibleModal ? (
         <ColorWrapper lastAnswer={lastAnswer}>{lastAnswer}</ColorWrapper>
       ) : (

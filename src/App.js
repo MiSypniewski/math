@@ -9,7 +9,7 @@ import { generateTasks } from "./logic/TaskGenerator";
 function App() {
   const [display, setDisplay] = useState("main");
   const [currentTask, setCurrentTask] = useState(0);
-  const [useTimer, setTimer] = useState(15);
+  const [useTimer, setTimer] = useState(150);
   const [lastAnswer, setLastAnswer] = useState("");
   const [countCorrectAnswer, setCountCorrectAnswer] = useState(0);
   const [countWrongAnswer, setCountWrongAnswer] = useState(0);
@@ -22,6 +22,10 @@ function App() {
       setCurrentTask((prevState) => prevState + 1);
       setCountCorrectAnswer((prevState) => prevState + 1);
       setLastAnswer("Dobrze");
+    } else if (userAnswer === "overtime") {
+      setCurrentTask((prevState) => prevState + 1);
+      setCountWrongAnswer((prevState) => prevState + 1);
+      setLastAnswer("Czas minął");
     } else {
       setCountWrongAnswer((prevState) => prevState + 1);
       setLastAnswer("Źle");
