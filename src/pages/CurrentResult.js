@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
 import ProgressBar from "../components/ProgressBar";
+
 const Flex = styled.div`
   width: 95%;
   margin: 16px auto;
-  /* text-align: center; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,20 +17,17 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 5fr 2fr;
   grid-gap: 8px 16px;
-  /* justify-items: center; */
   align-items: center;
 `;
 
-const AlignLeft = styled.div`
-  /* text-align: left; */
-  /* margin-top: 4px; */
+const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-items: center;
   align-items: center;
 `;
 
-const AlignRight = styled.div`
+const AlignCenter = styled.div`
   text-align: center;
 `;
 
@@ -46,14 +43,14 @@ function CurrentResult({ changePage, countCorrectAnswer, countWrongAnswer, answe
       <Wrapper>
         {answerTable.map((item) => (
           <>
-            <AlignLeft>
+            <Grid>
               <div>{item.a}</div>
               <div>{item.type}</div>
               <div>{item.b}</div>
               <div>=</div>
               <div>{item.c}</div>
-            </AlignLeft>
-            <AlignRight>{item.answer}</AlignRight>
+            </Grid>
+            <AlignCenter>{item.answer}</AlignCenter>
           </>
         ))}
       </Wrapper>
