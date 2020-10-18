@@ -14,13 +14,12 @@ function App() {
   const [lastAnswer, setLastAnswer] = useState("");
   const [countCorrectAnswer, setCountCorrectAnswer] = useState(0);
   const [countWrongAnswer, setCountWrongAnswer] = useState(0);
-  const [zakresDodowania, setZakresDodawania] = useState(100);
-  const [zakresMnozenia, setZakresMnozenia] = useState(10);
-  const [tasksTable, setTasksTable] = useState(generateTasks(zakresDodowania, zakresMnozenia));
+  const [additionRange, setAdditionRange] = useState(100);
+  const [multiplicationRange, setMultiplicationRange] = useState(10);
+  const [tasksTable, setTasksTable] = useState(generateTasks(additionRange, multiplicationRange));
   const [answerTable, setAnswerTable] = useState([]);
 
   function checkAnswer(userAnswer, trueAnswer, intA, intB, type) {
-    console.log(`userAnser: ${userAnswer}, trueAsnwer: ${trueAnswer}, intA: ${intA}, initB: ${intB}, type: ${type}`);
     if (userAnswer === trueAnswer) {
       setCurrentTask((prevState) => prevState + 1);
       setCountCorrectAnswer((prevState) => prevState + 1);
@@ -70,7 +69,7 @@ function App() {
     setCurrentTask(currentTask);
     setCountCorrectAnswer(0);
     setCountWrongAnswer(0);
-    setTasksTable(generateTasks(zakresDodowania, zakresMnozenia));
+    setTasksTable(generateTasks(additionRange, multiplicationRange));
     setLastAnswer("");
   }
 

@@ -42,23 +42,23 @@ function answerGenerator(trueAnswer) {
   return shuffle(tmpArray);
 }
 
-export function generateTasks(zakresDodowania, zakresMnozenia) {
+export function generateTasks(additionRange, multiplicationRange) {
   const TaskArray = [];
   for (let i = 0; i < 10; i++) {
     const jakieZadanie = Math.floor(Math.random() * 4 + 1);
 
     switch (jakieZadanie) {
       case 1:
-        TaskArray.push(Dodawanie(i, zakresDodowania));
+        TaskArray.push(Dodawanie(i, additionRange));
         break;
       case 2:
-        TaskArray.push(Odejmowanie(i, zakresDodowania));
+        TaskArray.push(Odejmowanie(i, additionRange));
         break;
       case 3:
-        TaskArray.push(Mnozenie(i, zakresMnozenia));
+        TaskArray.push(Mnozenie(i, multiplicationRange));
         break;
       case 4:
-        TaskArray.push(Dzielenie(i, zakresMnozenia));
+        TaskArray.push(Dzielenie(i, multiplicationRange));
         break;
       default:
         console.log(`Sorry, we are out of ${jakieZadanie}.`);
