@@ -55,19 +55,20 @@ function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0 }) {
     } else {
       setVisibleModal(false);
     }
-  });
+  }, [lastAnswer]);
 
   useEffect(() => {
     const intervalId = setInterval(() => setRemainingTime((prev) => prev - 1), 100);
     if (useTimer === 0) return clearInterval(intervalId);
     if (remainingTime <= 0) {
-      checkAnswer(variables.answerMessage.overtime, task.c);
+      checkAnswer(variables.answerMessage.overtime, task.c, task.a, task.b, task.type);
       return clearInterval(intervalId);
     }
     return () => {
       clearInterval(intervalId);
     };
   }, [remainingTime]);
+
   return (
     <>
       {useTimer !== 0 ? <ProgressBar remainingTime={remainingTime} useTimer={useTimer} /> : null}
@@ -84,7 +85,7 @@ function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0 }) {
             key={item.id}
             largeText
             transparentText={lastAnswer === variables.answerMessage.good ? true : false}
-            onClick={() => checkAnswer(item, task.c)}
+            onClick={() => checkAnswer(item, task.c, task.a, task.b, task.type)}
             value={item}
           >
             {item}

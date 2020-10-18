@@ -14,6 +14,7 @@ function Tasks({
   lastAnswer,
   setLastAnswer,
   useTimer,
+  answerTable,
 }) {
   return (
     <>
@@ -32,6 +33,7 @@ function Tasks({
           countWrongAnswer={countWrongAnswer}
           countCorrectAnswer={countCorrectAnswer}
           changePage={changePage}
+          answerTable={answerTable}
         />
       )}
     </>

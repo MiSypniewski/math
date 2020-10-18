@@ -10,26 +10,58 @@ import { variables } from "./variables/variables";
 function App() {
   const [display, setDisplay] = useState(variables.pages.main);
   const [currentTask, setCurrentTask] = useState(0);
-  const [useTimer, setTimer] = useState(150);
+  const [useTimer, setTimer] = useState(10);
   const [lastAnswer, setLastAnswer] = useState("");
   const [countCorrectAnswer, setCountCorrectAnswer] = useState(0);
   const [countWrongAnswer, setCountWrongAnswer] = useState(0);
   const [zakresDodowania, setZakresDodawania] = useState(100);
   const [zakresMnozenia, setZakresMnozenia] = useState(10);
   const [tasksTable, setTasksTable] = useState(generateTasks(zakresDodowania, zakresMnozenia));
+  const [answerTable, setAnswerTable] = useState([]);
 
-  function checkAnswer(userAnswer, trueAnswer) {
+  function checkAnswer(userAnswer, trueAnswer, intA, intB, type) {
+    console.log(`userAnser: ${userAnswer}, trueAsnwer: ${trueAnswer}, intA: ${intA}, initB: ${intB}, type: ${type}`);
     if (userAnswer === trueAnswer) {
       setCurrentTask((prevState) => prevState + 1);
       setCountCorrectAnswer((prevState) => prevState + 1);
       setLastAnswer(variables.answerMessage.good);
+      setAnswerTable((prevState) => [
+        ...prevState,
+        {
+          a: intA,
+          b: intB,
+          c: userAnswer,
+          type: type,
+          answer: variables.answerMessage.good,
+        },
+      ]);
     } else if (userAnswer === variables.answerMessage.overtime) {
       setCurrentTask((prevState) => prevState + 1);
       setCountWrongAnswer((prevState) => prevState + 1);
       setLastAnswer(variables.answerMessage.overtime);
+      setAnswerTable((prevState) => [
+        ...prevState,
+        {
+          a: intA,
+          b: intB,
+          c: trueAnswer,
+          type: type,
+          answer: variables.answerMessage.overtime,
+        },
+      ]);
     } else {
       setCountWrongAnswer((prevState) => prevState + 1);
       setLastAnswer(variables.answerMessage.bad);
+      setAnswerTable((prevState) => [
+        ...prevState,
+        {
+          a: intA,
+          b: intB,
+          c: userAnswer,
+          type: type,
+          answer: variables.answerMessage.bad,
+        },
+      ]);
     }
   }
 
@@ -58,6 +90,7 @@ function App() {
             checkAnswer={checkAnswer}
             changePage={changePage}
             useTimer={useTimer}
+            answerTable={answerTable}
           />
         ) : null}
       </ThemeProvider>
