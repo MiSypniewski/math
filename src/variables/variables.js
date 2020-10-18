@@ -7,6 +7,6 @@ export const variables = {
   answerMessage: {
     good: "Dobrze",
     bad: "Źle",
-    overtime: "Czas Minął",
+    overtime: "Czas minął",
   },
 };
