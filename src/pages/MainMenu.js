@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
 import Hero from "../components/Hero";
+import { variables } from "../variables/variables";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ function MainMenu({ changePage }) {
     <>
       <Hero text="Matematyka"></Hero>
       <Wrapper>
-        <Button onClick={() => changePage("start", 0)}>Rozpocznij</Button>
+        <Button onClick={() => changePage(variables.pages.start, 0)}>Rozpocznij</Button>
         <Button>Ustawienia</Button>
       </Wrapper>
     </>

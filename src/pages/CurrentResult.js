@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 
 function CurrentResult({ changePage, countCorrectAnswer, countWrongAnswer }) {
   const procent = (countCorrectAnswer / (countCorrectAnswer + countWrongAnswer)) * 100;
-  // console.log((countWrongAnswer / countCorrectAnswer) * 100);
 
   return (
     <Wrapper>

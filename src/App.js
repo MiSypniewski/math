@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./theme/GlobalStyle";
 import { theme } from "./theme/mainTheme";
@@ -39,6 +39,7 @@ function App() {
     setCountCorrectAnswer(0);
     setCountWrongAnswer(0);
     setTasksTable(generateTasks(zakresDodowania, zakresMnozenia));
+    setLastAnswer("");
   }
 
   return (
