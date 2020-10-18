@@ -19,15 +19,15 @@ const EmptyBar = styled.div`
     display: block;
     content: "";
     height: 24px;
-    border-radius: 16px;
+    border-radius: 8px;
     width: ${({ precent }) => `${precent}%`};
-    background-color: ${({ theme }) => theme.yellow};
+    background-color: ${({ theme, fiolet }) => (fiolet ? theme.lightFiolet : theme.yellow)};
   }
 `;
 
-function ProgressBar({ remainingTime, useTimer }) {
+function ProgressBar({ remainingTime, useTimer, fiolet = false }) {
   const precent = (remainingTime / useTimer) * 100;
-  return <EmptyBar precent={precent} />;
+  return <EmptyBar precent={precent} fiolet={fiolet} />;
 }
 
 export default ProgressBar;

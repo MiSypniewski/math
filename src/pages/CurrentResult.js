@@ -21,6 +21,22 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
+const RowWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-weight: ${({ theme }) => theme.bold};
+  justify-content: space-around;
+`;
+
+const ColorDiv = styled.div`
+  color: ${({ theme, color }) => {
+    if (color === variables.answerMessage.good) return theme.green;
+    if (color === variables.answerMessage.overtime) return theme.yellow;
+    if (color === variables.answerMessage.bad) return theme.red;
+  }};
+`;
+
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -31,7 +47,7 @@ const Grid = styled.div`
   color: ${({ theme, color }) => {
     if (color === variables.answerMessage.good) return theme.green;
     if (color === variables.answerMessage.overtime) return theme.yellow;
-    if (color === variables.answerMessage.bad) return theme.fiolet;
+    if (color === variables.answerMessage.bad) return theme.red;
   }};
 `;
 
@@ -42,7 +58,7 @@ const AlignCenter = styled.div`
   color: ${({ theme, color }) => {
     if (color === variables.answerMessage.good) return theme.green;
     if (color === variables.answerMessage.overtime) return theme.yellow;
-    if (color === variables.answerMessage.bad) return theme.fiolet;
+    if (color === variables.answerMessage.bad) return theme.red;
   }};
 `;
 
@@ -51,9 +67,11 @@ function CurrentResult({ changePage, countCorrectAnswer, countWrongAnswer, answe
   const useTimer = countCorrectAnswer + countWrongAnswer;
   return (
     <Flex>
-      <div>Poprawne odpowiedzi: {countCorrectAnswer}</div>
-      <div>Błędne odpowiedzi: {countWrongAnswer}</div>
-      <ProgressBar remainingTime={remainingTime} useTimer={useTimer} />
+      <RowWrapper>
+        <ColorDiv color={variables.answerMessage.good}>Poprawne: {countCorrectAnswer}</ColorDiv>
+        <ColorDiv color={variables.answerMessage.bad}>Błędne: {countWrongAnswer}</ColorDiv>
+      </RowWrapper>
+      <ProgressBar remainingTime={remainingTime} useTimer={useTimer} fiolet={true} />
 
       <Wrapper>
         {answerTable.map((item) => (

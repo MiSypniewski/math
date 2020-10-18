@@ -18,6 +18,7 @@ function App() {
   const [multiplicationRange, setMultiplicationRange] = useState(10);
   const [tasksTable, setTasksTable] = useState(generateTasks(additionRange, multiplicationRange));
   const [answerTable, setAnswerTable] = useState([]);
+  const [currentLesson, setCurrentLesson] = useState(1);
 
   function checkAnswer(userAnswer, trueAnswer, intA, intB, type) {
     if (userAnswer === trueAnswer) {
