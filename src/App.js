@@ -5,9 +5,10 @@ import { theme } from "./theme/mainTheme";
 import MainMenu from "./pages/MainMenu";
 import Tasks from "./pages/Tasks";
 import { generateTasks } from "./logic/TaskGenerator";
+import { variables } from "./variables/variables";
 
 function App() {
-  const [display, setDisplay] = useState("main");
+  const [display, setDisplay] = useState(variables.pages.main);
   const [currentTask, setCurrentTask] = useState(0);
   const [useTimer, setTimer] = useState(150);
   const [lastAnswer, setLastAnswer] = useState("");
@@ -21,14 +22,14 @@ function App() {
     if (userAnswer === trueAnswer) {
       setCurrentTask((prevState) => prevState + 1);
       setCountCorrectAnswer((prevState) => prevState + 1);
-      setLastAnswer("Dobrze");
-    } else if (userAnswer === "overtime") {
+      setLastAnswer(variables.answerMessage.good);
+    } else if (userAnswer === variables.answerMessage.overtime) {
       setCurrentTask((prevState) => prevState + 1);
       setCountWrongAnswer((prevState) => prevState + 1);
-      setLastAnswer("Czas minął");
+      setLastAnswer(variables.answerMessage.overtime);
     } else {
       setCountWrongAnswer((prevState) => prevState + 1);
-      setLastAnswer("Źle");
+      setLastAnswer(variables.answerMessage.bad);
     }
   }
 
@@ -44,8 +45,8 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        {display === "main" ? <MainMenu changePage={changePage} /> : null}
-        {display === "start" ? (
+        {display === variables.pages.main ? <MainMenu changePage={changePage} /> : null}
+        {display === variables.pages.start ? (
           <Tasks
             tasksTable={tasksTable}
             currentTask={currentTask}

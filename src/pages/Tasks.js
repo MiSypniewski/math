@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "../components/Hero";
 import Task from "../components/Task";
 import CurrentResult from "./CurrentResult";
+import { variables } from "./../variables/variables";
 
 function Tasks({
   changePage,
@@ -16,7 +17,7 @@ function Tasks({
 }) {
   return (
     <>
-      <Hero text="Lekcja" btnLeftFn={changePage} btnLeftFnProperty="main" />
+      <Hero text="Lekcja" btnLeftFn={changePage} btnLeftFnProperty={variables.pages.main} />
       {currentTask < tasksTable.length ? (
         <Task
           key={tasksTable[currentTask].id}

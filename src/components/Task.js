@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
 import ProgressBar from "../components/ProgressBar";
+import { variables } from "./../variables/variables";
 
 const Grid = styled.div`
   display: grid;
@@ -33,7 +34,8 @@ const ColorWrapper = styled.div`
   margin: 24px auto 0;
   font-size: ${({ theme }) => theme.fontSize.xl};
   font-weight: ${({ theme }) => theme.bold};
-  background-color: ${({ lastAnswer, theme }) => (lastAnswer === "Dobrze" ? theme.green : theme.lightFiolet)};
+  background-color: ${({ lastAnswer, theme }) =>
+    lastAnswer === variables.answerMessage.good ? theme.green : theme.lightFiolet};
   border-radius: 16px;
   text-align: center;
   box-shadow: inset 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
@@ -59,7 +61,7 @@ function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0 }) {
     const intervalId = setInterval(() => setRemainingTime((prev) => prev - 1), 100);
     if (useTimer === 0) return clearInterval(intervalId);
     if (remainingTime <= 0) {
-      checkAnswer("overtime", task.c);
+      checkAnswer(variables.answerMessage.overtime, task.c);
       return clearInterval(intervalId);
     }
     return () => {
@@ -81,7 +83,7 @@ function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0 }) {
           <Button
             key={item.id}
             largeText
-            transparentText={lastAnswer === "Dobrze" ? true : false}
+            transparentText={lastAnswer === variables.answerMessage.good ? true : false}
             onClick={() => checkAnswer(item, task.c)}
             value={item}
           >
