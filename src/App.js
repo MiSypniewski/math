@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./theme/GlobalStyle";
 import { theme } from "./theme/mainTheme";
@@ -18,7 +18,7 @@ function App() {
   const [multiplicationRange, setMultiplicationRange] = useState(10);
   const [tasksTable, setTasksTable] = useState(generateTasks(additionRange, multiplicationRange));
   const [answerTable, setAnswerTable] = useState([]);
-  const [currentLesson, setCurrentLesson] = useState(1);
+  const [currentLesson, setCurrentLesson] = useState(0);
 
   function checkAnswer(userAnswer, trueAnswer, intA, intB, type) {
     if (userAnswer === trueAnswer) {
@@ -65,14 +65,25 @@ function App() {
     }
   }
 
-  function changePage(page, currentTask = 0) {
-    setDisplay(page);
+  function newLesson(currentTask = 0) {
     setCurrentTask(currentTask);
     setCountCorrectAnswer(0);
     setCountWrongAnswer(0);
     setTasksTable(generateTasks(additionRange, multiplicationRange));
     setLastAnswer("");
+    setCurrentLesson((prevState) => prevState + 1);
+    setAnswerTable([]);
   }
+
+  function changePage(page) {
+    if (variables.pages.start === page) newLesson();
+    setDisplay(page);
+  }
+
+  useEffect(() => {
+    const lastLesson = localStorage.getItem("lastLesson");
+    setCurrentLesson(Number(lastLesson));
+  }, []);
 
   return (
     <>
@@ -91,6 +102,7 @@ function App() {
             changePage={changePage}
             useTimer={useTimer}
             answerTable={answerTable}
+            currentLesson={currentLesson}
           />
         ) : null}
       </ThemeProvider>

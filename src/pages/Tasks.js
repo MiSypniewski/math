@@ -15,10 +15,12 @@ function Tasks({
   setLastAnswer,
   useTimer,
   answerTable,
+  currentLesson,
 }) {
+  const text = `Lekcja ${currentLesson}`;
   return (
     <>
-      <Hero text="Lekcja" btnLeftFn={changePage} btnLeftFnProperty={variables.pages.main} />
+      <Hero title={text} btnLeftFn={changePage} btnLeftFnProperty={variables.pages.main} />
       {currentTask < tasksTable.length ? (
         <Task
           key={tasksTable[currentTask].id}
@@ -34,6 +36,7 @@ function Tasks({
           countCorrectAnswer={countCorrectAnswer}
           changePage={changePage}
           answerTable={answerTable}
+          currentLesson={currentLesson}
         />
       )}
     </>

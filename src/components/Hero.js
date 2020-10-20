@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { variables } from "./../variables/variables";
 
 const Tmp = styled.div`
   height: 63px;
@@ -19,11 +20,15 @@ const Wrapper = styled.div`
   box-shadow: 0px 8px 12px -4px rgba(0, 0, 0, 0.5);
 `;
 
-function Hero({ text = "Matematyka", btnLeftFn = (text) => console.log(text), btnLeftFnProperty = "main" }) {
+function Hero({
+  title = "Matematyka",
+  btnLeftFn = (title) => console.log(title),
+  btnLeftFnProperty = variables.pages.main,
+}) {
   return (
     <Wrapper>
       <Tmp onClick={() => btnLeftFn(btnLeftFnProperty)}>BTN</Tmp>
-      <h3>{text}</h3>
+      <h3>{title}</h3>
       <Tmp>BTN</Tmp>
     </Wrapper>
   );

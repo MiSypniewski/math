@@ -62,9 +62,44 @@ const AlignCenter = styled.div`
   }};
 `;
 
-function CurrentResult({ changePage, countCorrectAnswer, countWrongAnswer, answerTable }) {
+function CurrentResult({ changePage, countCorrectAnswer, countWrongAnswer, answerTable, currentLesson }) {
   const remainingTime = countCorrectAnswer;
   const useTimer = countCorrectAnswer + countWrongAnswer;
+  const precent = (remainingTime / useTimer) * 100;
+  let allData = [];
+
+  function getDateNow() {
+    const date = new Date();
+
+    const dateOptions = {
+      hour12: false,
+      hour: "numeric",
+      minute: "2-digit",
+      second: "2-digit",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    };
+
+    return date.toLocaleString("pl-PL", dateOptions);
+  }
+
+  const currentLessonToSave = {
+    lesson: currentLesson,
+    date: getDateNow(),
+    correctAnswer: countCorrectAnswer,
+    wrongAnswer: countWrongAnswer,
+    precent: precent,
+    answerTable: answerTable,
+  };
+
+  const lastDb = JSON.parse(localStorage.getItem("db"));
+  if (lastDb) allData = lastDb;
+  allData.unshift(currentLessonToSave);
+
+  localStorage.setItem("lastLesson", currentLesson);
+  localStorage.setItem("db", JSON.stringify(allData));
+
   return (
     <Flex>
       <RowWrapper>
@@ -88,7 +123,7 @@ function CurrentResult({ changePage, countCorrectAnswer, countWrongAnswer, answe
         ))}
       </Wrapper>
 
-      <Button fiolet onClick={() => changePage("main")}>
+      <Button fiolet onClick={() => changePage(variables.pages.main)}>
         OK
       </Button>
     </Flex>
