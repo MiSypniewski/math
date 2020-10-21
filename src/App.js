@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
+import { v4 as uuid } from "uuid";
 import GlobalStyle from "./theme/GlobalStyle";
 import { theme } from "./theme/mainTheme";
 import MainMenu from "./pages/MainMenu";
+import AllResults from "./pages/AllResults";
 import Tasks from "./pages/Tasks";
 import { generateTasks } from "./logic/TaskGenerator";
 import { variables } from "./variables/variables";
@@ -28,6 +30,7 @@ function App() {
       setAnswerTable((prevState) => [
         ...prevState,
         {
+          id: uuid(),
           a: intA,
           b: intB,
           c: userAnswer,
@@ -42,6 +45,7 @@ function App() {
       setAnswerTable((prevState) => [
         ...prevState,
         {
+          id: uuid(),
           a: intA,
           b: intB,
           c: trueAnswer,
@@ -55,6 +59,7 @@ function App() {
       setAnswerTable((prevState) => [
         ...prevState,
         {
+          id: uuid(),
           a: intA,
           b: intB,
           c: userAnswer,
@@ -105,6 +110,7 @@ function App() {
             currentLesson={currentLesson}
           />
         ) : null}
+        {display === variables.pages.results ? <AllResults changePage={changePage} /> : null}
       </ThemeProvider>
     </>
   );

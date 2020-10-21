@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { v4 as uuid } from "uuid";
 import Button from "../components/Button";
 import ProgressBar from "../components/ProgressBar";
 import { variables } from "./../variables/variables";
@@ -85,11 +86,12 @@ function CurrentResult({ changePage, countCorrectAnswer, countWrongAnswer, answe
   }
 
   const currentLessonToSave = {
+    id: uuid(),
     lesson: currentLesson,
     date: getDateNow(),
     correctAnswer: countCorrectAnswer,
     wrongAnswer: countWrongAnswer,
-    precent: precent,
+    precent: Math.floor(precent),
     answerTable: answerTable,
   };
 

@@ -11,9 +11,13 @@ const Wrapper = styled.div`
   height: 100px;
   width: 100%;
   flex-direction: column;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
   align-items: center;
+`;
+
+const Item = styled.div`
+  margin: 16px auto 0;
 `;
 
 function MainMenu({ changePage }) {
@@ -21,8 +25,15 @@ function MainMenu({ changePage }) {
     <>
       <Hero text="Matematyka"></Hero>
       <Wrapper>
-        <Button onClick={() => changePage(variables.pages.start, 0)}>Rozpocznij</Button>
-        <Button>Ustawienia</Button>
+        <Item>
+          <Button onClick={() => changePage(variables.pages.start, 0)}>Rozpocznij</Button>
+        </Item>
+        <Item>
+          <Button onClick={() => changePage(variables.pages.results, 0)}>Wyniki</Button>
+        </Item>
+        <Item>
+          <Button>Ustawienia</Button>
+        </Item>
       </Wrapper>
     </>
   );
