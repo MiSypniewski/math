@@ -13,7 +13,7 @@ import { variables } from "./variables/variables";
 function App() {
   const [display, setDisplay] = useState(variables.pages.main);
   const [currentTask, setCurrentTask] = useState(0);
-  const [useTimer, setTimer] = useState(10);
+  const [useTimer, setTimer] = useState(150);
   const [lastAnswer, setLastAnswer] = useState("");
   const [countCorrectAnswer, setCountCorrectAnswer] = useState(0);
   const [countWrongAnswer, setCountWrongAnswer] = useState(0);
