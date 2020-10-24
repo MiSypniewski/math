@@ -1,9 +1,11 @@
-<h1>Math</h1>
-<p>Prosta aplikacja do ćwieczenia tabliczki mnożenia, dodawania i odejmowania</p>
+<h1>
 
 [Matematyka](https://misypniewski.github.io/math/)
 
-<h2>Ustawienia<h2>
+</h1>
+<p>Prosta aplikacja do ćwieczenia tabliczki mnożenia, dodawania i odejmowania</p>
+
+## `Ustawienia`
 
 ### `Dodawanie i odejmowanie`
 
