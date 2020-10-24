@@ -44,6 +44,7 @@ const Grid = styled.div`
   justify-items: center;
   align-items: center;
   font-weight: ${({ theme }) => theme.bold};
+  font-size: ${({ theme }) => theme.fontSize.m};
 
   color: ${({ theme, color }) => {
     if (color === variables.answerMessage.good) return theme.green;
@@ -105,8 +106,12 @@ function CurrentResult({ changePage, countCorrectAnswer, countWrongAnswer, answe
   return (
     <Flex>
       <RowWrapper>
-        <ColorDiv color={variables.answerMessage.good}>Poprawne: {countCorrectAnswer}</ColorDiv>
-        <ColorDiv color={variables.answerMessage.bad}>Błędne: {countWrongAnswer}</ColorDiv>
+        <ColorDiv color={variables.answerMessage.good}>
+          {variables.emoji.good}: {countCorrectAnswer}
+        </ColorDiv>
+        <ColorDiv color={variables.answerMessage.bad}>
+          {variables.emoji.wrong}: {countWrongAnswer}
+        </ColorDiv>
       </RowWrapper>
       <ProgressBar remainingTime={remainingTime} useTimer={useTimer} fiolet={true} />
 
@@ -120,7 +125,7 @@ function CurrentResult({ changePage, countCorrectAnswer, countWrongAnswer, answe
               <div>=</div>
               <div>{item.c}</div>
             </Grid>
-            <AlignCenter color={item.answer}>{item.answer}</AlignCenter>
+            <AlignCenter color={item.answer}>{item.emoji}</AlignCenter>
           </>
         ))}
       </Wrapper>

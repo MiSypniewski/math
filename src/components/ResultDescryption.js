@@ -51,13 +51,14 @@ const RowWrapper = styled.div`
   flex-direction: row;
   width: 100%;
   font-weight: ${({ theme }) => theme.bold};
+  margin: 8px auto;
   justify-content: space-around;
 `;
 
 const TWrapper = styled.div`
-  margin: 32px auto;
+  margin: 24px auto;
   display: grid;
-  grid-template-columns: 6fr 3fr;
+  grid-template-columns: 7fr 3fr;
   grid-gap: 8px 16px;
   align-items: center;
 `;
@@ -69,8 +70,12 @@ function ResultDescryption({ result, isVisible }) {
         <ColorDiv color={variables.answerMessage.fiolet}>Lekcja: {result.lesson}</ColorDiv>
       </RowWrapper>
       <RowWrapper>
-        <ColorDiv color={variables.answerMessage.good}>Poprawne: {result.correctAnswer}</ColorDiv>
-        <ColorDiv color={variables.answerMessage.bad}>Błędne: {result.wrongAnswer}</ColorDiv>
+        <ColorDiv color={variables.answerMessage.good}>
+          {variables.emoji.good}: {result.correctAnswer}
+        </ColorDiv>
+        <ColorDiv color={variables.answerMessage.bad}>
+          {variables.emoji.wrong}: {result.wrongAnswer}
+        </ColorDiv>
       </RowWrapper>
       <TWrapper>
         {result.answerTable.map((answer) => (
@@ -83,7 +88,7 @@ function ResultDescryption({ result, isVisible }) {
               <div>{answer.c}</div>
             </Grid>
             <AlignCenter key={uuid()} color={answer.answer}>
-              {answer.answer}
+              {answer.emoji}
             </AlignCenter>
           </>
         ))}

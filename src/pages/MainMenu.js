@@ -26,13 +26,17 @@ function MainMenu({ changePage }) {
       <Hero text="Matematyka"></Hero>
       <Wrapper>
         <Item>
-          <Button onClick={() => changePage(variables.pages.start, 0)}>Rozpocznij</Button>
+          <Button big onClick={() => changePage(variables.pages.start, 0)}>
+            Rozpocznij {variables.emoji.brain}
+          </Button>
         </Item>
         <Item>
-          <Button onClick={() => changePage(variables.pages.results, 0)}>Wyniki</Button>
+          <Button big onClick={() => changePage(variables.pages.results, 0)}>
+            Wyniki {variables.emoji.cup}
+          </Button>
         </Item>
         <Item>
-          <Button>Ustawienia</Button>
+          <Button big>Ustawienia {variables.emoji.settings}</Button>
         </Item>
       </Wrapper>
     </>

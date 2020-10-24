@@ -36,6 +36,7 @@ function App() {
           c: userAnswer,
           type: type,
           answer: variables.answerMessage.good,
+          emoji: variables.emoji.good,
         },
       ]);
     } else if (userAnswer === variables.answerMessage.overtime) {
@@ -51,6 +52,7 @@ function App() {
           c: trueAnswer,
           type: type,
           answer: variables.answerMessage.overtime,
+          emoji: variables.emoji.time,
         },
       ]);
     } else {
@@ -65,6 +67,7 @@ function App() {
           c: userAnswer,
           type: type,
           answer: variables.answerMessage.bad,
+          emoji: variables.emoji.wrong,
         },
       ]);
     }

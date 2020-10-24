@@ -14,6 +14,7 @@ const Button = styled.button`
   border: none;
   border-radius: 16px;
   box-shadow: 0px 8px 12px -4px rgba(0, 0, 0, 0.5);
+  text-align: center;
 
   :active {
     top: 4px;
@@ -46,27 +47,6 @@ const Button = styled.button`
     }
   }
 
-  ${({ largeText }) =>
-    largeText &&
-    css`
-      font-size: ${({ theme }) => theme.fontSize.m};
-    `};
-
-  ${({ transparentText }) =>
-    transparentText &&
-    css`
-      color: rgba(0, 0, 0, 0.01);
-    `};
-
-  ${({ lightBlue }) =>
-    lightBlue &&
-    css`
-      background-color: ${({ theme }) => theme.lightBlue};
-      :hover {
-        background-color: ${({ theme }) => theme.blue};
-      }
-    `};
-
   ${({ fiolet }) =>
     fiolet &&
     css`
@@ -83,12 +63,19 @@ const Button = styled.button`
       }
     `};
 
-  ${({ red }) =>
-    red &&
+  ${({ largeText }) =>
+    largeText &&
     css`
-      background-color: ${({ theme }) => theme.red};
-      :hover {
-        background-color: ${({ theme }) => theme.lightRed};
+      font-size: ${({ theme }) => theme.fontSize.m};
+    `};
+
+  ${({ big }) =>
+    big &&
+    css`
+      width: 160px;
+
+      ::before {
+        width: 160px;
       }
     `};
 `;

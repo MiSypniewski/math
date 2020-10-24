@@ -11,4 +11,15 @@ export const variables = {
     overtime: "Czas minął",
     fiolet: "fiolet",
   },
+  emoji: {
+    wrong: "❌",
+    good: "✔️",
+    time: "🕒",
+    back: "⬅️",
+    hacker: "👨🏻‍💻",
+    teacher: "👨🏻‍🏫",
+    settings: "⚙️",
+    brain: "🧠",
+    cup: "🏆",
+  },
 };

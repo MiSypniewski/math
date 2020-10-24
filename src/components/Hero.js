@@ -2,11 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { variables } from "./../variables/variables";
 
-const Tmp = styled.div`
+const LeftDiv = styled.div`
   height: 63px;
   width: 64px;
   text-align: center;
-  background-color: #fff;
+  font-size: ${({ theme }) => theme.fontSize.xl};
+`;
+
+const RightDiv = styled.div`
+  height: 63px;
+  width: 64px;
+  text-align: center;
 `;
 
 const Wrapper = styled.div`
@@ -27,9 +33,11 @@ function Hero({
 }) {
   return (
     <Wrapper>
-      <Tmp onClick={() => btnLeftFn(btnLeftFnProperty)}>BTN</Tmp>
+      <LeftDiv onClick={() => btnLeftFn(btnLeftFnProperty)}>
+        {title === "Matematyka" ? variables.emoji.teacher : variables.emoji.back}
+      </LeftDiv>
       <h3>{title}</h3>
-      <Tmp>BTN</Tmp>
+      <RightDiv />
     </Wrapper>
   );
 }
