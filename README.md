@@ -1,5 +1,5 @@
 <h1>Math</h1>
-<p>Prosta aplikacja do ćwieczenia tabliczki mnożenia</p>
+<p>Prosta aplikacja do ćwieczenia tabliczki mnożenia, dodawania i odejmowania</p>
 
 [Matematyka](https://misypniewski.github.io/math/)
 
