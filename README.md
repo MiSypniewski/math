@@ -15,8 +15,8 @@
 
 <p>Ustawiamy zakres mnożenia i dzielenia. Wpisana wartość ustawia mnożnik<p>
 
-### `Czas na odpiedź`
+### `Czas na odpowiedź`
 
 <p>Ustawiamy maksymalny czas na odpowiedź w sekundach. Wpisanie wartości 0 powoduje, że użytkownik ma nieograniczony czas na odpowiedź</p>
 
-**Note: Przystosowane do urządzeń mobilnych**
+### `Przystosowane do urządzeń mobilnych`
