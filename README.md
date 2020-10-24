@@ -5,6 +5,10 @@
 </h1>
 <p>Prosta aplikacja do ćwieczenia tabliczki mnożenia, dodawania i odejmowania</p>
 
+<br />
+<br />
+<br />
+
 <h2>Ustawienia</h2>
 
 ### `Dodawanie i odejmowanie`
