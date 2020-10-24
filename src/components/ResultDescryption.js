@@ -3,10 +3,6 @@ import styled from "styled-components";
 import { variables } from "./../variables/variables";
 import { v4 as uuid } from "uuid";
 
-const Item = styled.div`
-  margin-top: 4px;
-`;
-
 const Wrapper = styled.div`
   display: ${({ isVisible }) => (isVisible ? "block" : "none")};
   margin: 16px auto;

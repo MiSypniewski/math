@@ -20,7 +20,12 @@ function Tasks({
   const text = `Lekcja ${currentLesson}`;
   return (
     <>
-      <Hero title={text} btnLeftFn={changePage} btnLeftFnProperty={variables.pages.main} />
+      <Hero
+        title={text}
+        btnLeftFn={changePage}
+        btnLeftFnProperty={variables.pages.main}
+        rightText={currentTask < tasksTable.length ? currentTask + 1 : ""}
+      />
       {currentTask < tasksTable.length ? (
         <Task
           key={tasksTable[currentTask].id}

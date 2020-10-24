@@ -23,7 +23,7 @@ const Item = styled.div`
 function MainMenu({ changePage }) {
   return (
     <>
-      <Hero text="Matematyka"></Hero>
+      <Hero text="Matematyka" />
       <Wrapper>
         <Item>
           <Button big onClick={() => changePage(variables.pages.start, 0)}>
@@ -36,7 +36,9 @@ function MainMenu({ changePage }) {
           </Button>
         </Item>
         <Item>
-          <Button big>Ustawienia {variables.emoji.settings}</Button>
+          <Button big onClick={() => changePage(variables.pages.settings, 0)}>
+            Ustawienia {variables.emoji.settings}
+          </Button>
         </Item>
       </Wrapper>
     </>

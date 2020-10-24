@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ResultDescryption from "./ResultDescryption";
-import { v4 as uuid } from "uuid";
 import styled from "styled-components";
 
 const RowWrapper = styled.div`
@@ -28,7 +27,7 @@ function Result({ result }) {
         <div>{result.date}</div>
         <div>{result.precent}%</div>
       </RowWrapper>
-      <ResultDescryption key={uuid()} isVisible={isVisible} result={result} />
+      <ResultDescryption key={result.id} isVisible={isVisible} result={result} />
     </Div>
   );
 }

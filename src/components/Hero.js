@@ -13,6 +13,7 @@ const RightDiv = styled.div`
   height: 63px;
   width: 64px;
   text-align: center;
+  font-weight: ${({ theme }) => theme.bold};
 `;
 
 const Wrapper = styled.div`
@@ -30,6 +31,7 @@ function Hero({
   title = "Matematyka",
   btnLeftFn = (title) => console.log(title),
   btnLeftFnProperty = variables.pages.main,
+  rightText = "",
 }) {
   return (
     <Wrapper>
@@ -37,7 +39,7 @@ function Hero({
         {title === "Matematyka" ? variables.emoji.teacher : variables.emoji.back}
       </LeftDiv>
       <h3>{title}</h3>
-      <RightDiv />
+      {rightText ? <RightDiv>{rightText} / 10</RightDiv> : <RightDiv />}
     </Wrapper>
   );
 }

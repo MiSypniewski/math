@@ -6,6 +6,7 @@ import { theme } from "./theme/mainTheme";
 import MainMenu from "./pages/MainMenu";
 import AllResults from "./pages/AllResults";
 import Tasks from "./pages/Tasks";
+import Settings from "./pages/Settings";
 import { generateTasks } from "./logic/TaskGenerator";
 import { variables } from "./variables/variables";
 
@@ -91,6 +92,12 @@ function App() {
   useEffect(() => {
     const lastLesson = localStorage.getItem("lastLesson");
     setCurrentLesson(Number(lastLesson));
+    const settings = JSON.parse(localStorage.getItem("settings"));
+    if (settings) {
+      setAdditionRange(Number(settings.additionRange));
+      setMultiplicationRange(Number(settings.multiplicationRange));
+      setTimer(Number(settings.useTimer));
+    }
   }, []);
 
   return (
@@ -114,6 +121,17 @@ function App() {
           />
         ) : null}
         {display === variables.pages.results ? <AllResults changePage={changePage} /> : null}
+        {display === variables.pages.settings ? (
+          <Settings
+            changePage={changePage}
+            setTimer={setTimer}
+            useTimer={useTimer}
+            setAdditionRange={setAdditionRange}
+            additionRange={additionRange}
+            setMultiplicationRange={setMultiplicationRange}
+            multiplicationRange={multiplicationRange}
+          />
+        ) : null}
       </ThemeProvider>
     </>
   );
