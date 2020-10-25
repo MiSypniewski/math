@@ -23,4 +23,9 @@
 
 <p>Ustawiamy maksymalny czas na odpowiedź w sekundach. Wpisanie wartości 0 powoduje, że użytkownik ma nieograniczony czas na odpowiedź</p>
 
+### `Użyć klawiatury`
+
+<p>Zaznaczona opcja: użytkownik sam musi wpisać odpowiedź.</p>
+<p>Odznaczona opcja: użytkownik wybiera spośród 6 odpowiedzi.</p>
+
 ### `Przystosowane do urządzeń mobilnych`
