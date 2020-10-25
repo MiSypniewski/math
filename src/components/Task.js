@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Button from "../components/Button";
+import Keyboard from "./Keyboard";
+import FakeAnswer from "./FakeAnswer";
 import ProgressBar from "../components/ProgressBar";
 import { variables } from "./../variables/variables";
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
-  max-width: 300px;
-  margin: 32px auto 0;
-  justify-items: center;
-  align-items: center;
-`;
 
 const Wrapper = styled.div`
   width: 80%;
@@ -41,7 +32,7 @@ const ColorWrapper = styled.div`
   box-shadow: inset 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
 `;
 
-function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0 }) {
+function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0, changeInput, inputUser, useKeyboard }) {
   const [isVisibleModal, setVisibleModal] = useState(false);
   const [remainingTime, setRemainingTime] = useState(useTimer);
 
@@ -76,22 +67,20 @@ function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0 }) {
         <ColorWrapper lastAnswer={lastAnswer}>{lastAnswer}</ColorWrapper>
       ) : (
         <Wrapper>
-          {task.a} {task.type} {task.b} = <span>?</span>
+          {task.a} {task.type} {task.b} = {inputUser}
         </Wrapper>
       )}
-      <Grid>
-        {task.fakeAnswer.map((item) => (
-          <Button
-            key={item.id}
-            largeText
-            transparentText={lastAnswer === variables.answerMessage.good ? true : false}
-            onClick={() => checkAnswer(item, task.c, task.a, task.b, task.type)}
-            value={item}
-          >
-            {item}
-          </Button>
-        ))}
-      </Grid>
+      {useKeyboard ? (
+        <Keyboard
+          lastAnswer={lastAnswer}
+          checkAnswer={checkAnswer}
+          changeInput={changeInput}
+          inputUser={inputUser}
+          task={task}
+        />
+      ) : (
+        <FakeAnswer checkAnswer={checkAnswer} task={task} lastAnswer={lastAnswer} />
+      )}
     </>
   );
 }

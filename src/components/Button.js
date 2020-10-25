@@ -69,6 +69,12 @@ const Button = styled.button`
       font-size: ${({ theme }) => theme.fontSize.m};
     `};
 
+  ${({ transparentText }) =>
+    transparentText &&
+    css`
+      color: rgba(0, 0, 0, 0.01);
+    `};
+
   ${({ big }) =>
     big &&
     css`
@@ -76,6 +82,18 @@ const Button = styled.button`
 
       ::before {
         width: 160px;
+      }
+    `};
+
+  ${({ small }) =>
+    small &&
+    css`
+      width: 96px;
+      height: 48px;
+
+      ::before {
+        width: 96px;
+        height: 48px;
       }
     `};
 `;
