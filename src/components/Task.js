@@ -32,10 +32,9 @@ const ColorWrapper = styled.div`
   box-shadow: inset 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
 `;
 
-function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0 }) {
+function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0, changeInput, inputUser, useKeyboard }) {
   const [isVisibleModal, setVisibleModal] = useState(false);
   const [remainingTime, setRemainingTime] = useState(useTimer);
-  const useKeyboard = false;
 
   useEffect(() => {
     if (lastAnswer) {
@@ -68,10 +67,20 @@ function Task({ task, checkAnswer, lastAnswer, setLastAnswer, useTimer = 0 }) {
         <ColorWrapper lastAnswer={lastAnswer}>{lastAnswer}</ColorWrapper>
       ) : (
         <Wrapper>
-          {task.a} {task.type} {task.b} = <span>?</span>
+          {task.a} {task.type} {task.b} = {inputUser}
         </Wrapper>
       )}
-      {useKeyboard ? <Keyboard /> : <FakeAnswer checkAnswer={checkAnswer} task={task} lastAnswer={lastAnswer} />}
+      {useKeyboard ? (
+        <Keyboard
+          lastAnswer={lastAnswer}
+          checkAnswer={checkAnswer}
+          changeInput={changeInput}
+          inputUser={inputUser}
+          task={task}
+        />
+      ) : (
+        <FakeAnswer checkAnswer={checkAnswer} task={task} lastAnswer={lastAnswer} />
+      )}
     </>
   );
 }

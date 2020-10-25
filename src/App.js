@@ -15,6 +15,8 @@ function App() {
   const [currentTask, setCurrentTask] = useState(0);
   const [useTimer, setTimer] = useState(150);
   const [lastAnswer, setLastAnswer] = useState("");
+  const [inputUser, setInputUser] = useState("?");
+  const [useKeyboard, setUseKeyboard] = useState(false);
   const [countCorrectAnswer, setCountCorrectAnswer] = useState(0);
   const [countWrongAnswer, setCountWrongAnswer] = useState(0);
   const [additionRange, setAdditionRange] = useState(100);
@@ -28,6 +30,7 @@ function App() {
       setCurrentTask((prevState) => prevState + 1);
       setCountCorrectAnswer((prevState) => prevState + 1);
       setLastAnswer(variables.answerMessage.good);
+      setInputUser("?");
       setAnswerTable((prevState) => [
         ...prevState,
         {
@@ -43,6 +46,7 @@ function App() {
     } else if (userAnswer === variables.answerMessage.overtime) {
       setCurrentTask((prevState) => prevState + 1);
       setCountWrongAnswer((prevState) => prevState + 1);
+      setInputUser("?");
       setLastAnswer(variables.answerMessage.overtime);
       setAnswerTable((prevState) => [
         ...prevState,
@@ -59,6 +63,7 @@ function App() {
     } else {
       setCountWrongAnswer((prevState) => prevState + 1);
       setLastAnswer(variables.answerMessage.bad);
+      setInputUser("?");
       setAnswerTable((prevState) => [
         ...prevState,
         {
@@ -89,6 +94,27 @@ function App() {
     setDisplay(page);
   }
 
+  function changeInput(value) {
+    if (inputUser === "?" && value !== variables.emoji.wrong) {
+      setInputUser(value);
+    } else if (value === variables.emoji.wrong) {
+      if (inputUser !== "?" && inputUser.length > 0) {
+        setInputUser((prevState) => {
+          let tmp = prevState.slice(0, prevState.length - 1);
+          if (tmp.length === 0) {
+            return "?";
+          } else {
+            return tmp;
+          }
+        });
+      } else {
+        setInputUser("?");
+      }
+    } else {
+      setInputUser((prevState) => prevState + value);
+    }
+  }
+
   useEffect(() => {
     const lastLesson = localStorage.getItem("lastLesson");
     setCurrentLesson(Number(lastLesson));
@@ -97,6 +123,7 @@ function App() {
       setAdditionRange(Number(settings.additionRange));
       setMultiplicationRange(Number(settings.multiplicationRange));
       setTimer(Number(settings.useTimer));
+      setUseKeyboard(settings.useKeyboard);
     }
   }, []);
 
@@ -118,6 +145,9 @@ function App() {
             useTimer={useTimer}
             answerTable={answerTable}
             currentLesson={currentLesson}
+            inputUser={inputUser}
+            changeInput={changeInput}
+            useKeyboard={useKeyboard}
           />
         ) : null}
         {display === variables.pages.results ? <AllResults changePage={changePage} /> : null}
@@ -130,6 +160,8 @@ function App() {
             additionRange={additionRange}
             setMultiplicationRange={setMultiplicationRange}
             multiplicationRange={multiplicationRange}
+            useKeyboard={useKeyboard}
+            setUseKeyboard={setUseKeyboard}
           />
         ) : null}
       </ThemeProvider>

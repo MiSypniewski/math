@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
+import { variables } from "../variables/variables";
 
 const Wrapper = styled.div`
   width: 95%;
@@ -12,21 +13,35 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-function Keyboard() {
+function Keyboard({ checkAnswer, changeInput, task, inputUser }) {
+  const buttons = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  let answer = 0;
+
+  if (inputUser === "?") answer = 0;
+  else answer = Number(inputUser);
+
   return (
     <Wrapper>
-      <Button small>1</Button>
-      <Button small>2</Button>
-      <Button small>3</Button>
-      <Button small>4</Button>
-      <Button small>5</Button>
-      <Button small>6</Button>
-      <Button small>7</Button>
-      <Button small>8</Button>
-      <Button small>9</Button>
-      <Button small>x</Button>
-      <Button small>0</Button>
-      <Button small>OK</Button>
+      {buttons.map((btn) => (
+        <Button small key={btn} value={btn} onClick={(e) => changeInput(e.target.value)}>
+          {btn}
+        </Button>
+      ))}
+
+      <Button small fiolet value={variables.emoji.wrong} onClick={(e) => changeInput(e.target.value)}>
+        {variables.emoji.wrong}
+      </Button>
+      <Button small value="0" onClick={(e) => changeInput(e.target.value)}>
+        0
+      </Button>
+      <Button
+        small
+        fiolet
+        value={variables.emoji.good}
+        onClick={() => checkAnswer(answer, task.c, task.a, task.b, task.type)}
+      >
+        {variables.emoji.good}
+      </Button>
     </Wrapper>
   );
 }

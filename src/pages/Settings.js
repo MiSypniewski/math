@@ -22,6 +22,12 @@ const Input = styled.input`
   border-radius: 4px;
 `;
 
+const CheckBox = styled.input`
+  height: 24px;
+  width: 24px;
+  margin: 0 auto;
+`;
+
 const SButton = styled(Button)`
   margin: 32px auto;
 `;
@@ -45,12 +51,15 @@ function Settings({
   additionRange,
   setMultiplicationRange,
   multiplicationRange,
+  useKeyboard,
+  setUseKeyboard,
 }) {
   function save() {
     const obj = {
       additionRange: additionRange,
       multiplicationRange: multiplicationRange,
       useTimer: useTimer,
+      useKeyboard: useKeyboard,
     };
     localStorage.setItem("settings", JSON.stringify(obj));
     changePage(variables.pages.main);
@@ -93,6 +102,15 @@ function Settings({
             type="number"
             value={convertTimerToSeconds(useTimer)}
             onChange={(e) => setTimer(convertTimerToMiliseconds(e.target.value))}
+          />
+        </Grid>
+        <Grid>
+          <div>Użyć klawiatury: </div>
+          <CheckBox
+            type="checkbox"
+            checked={useKeyboard}
+            value={useKeyboard}
+            onChange={() => setUseKeyboard((prevState) => !prevState)}
           />
         </Grid>
 

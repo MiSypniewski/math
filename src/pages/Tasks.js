@@ -16,6 +16,9 @@ function Tasks({
   useTimer,
   answerTable,
   currentLesson,
+  inputUser,
+  changeInput,
+  useKeyboard,
 }) {
   const text = `Lekcja ${currentLesson}`;
   return (
@@ -34,6 +37,9 @@ function Tasks({
           lastAnswer={lastAnswer}
           setLastAnswer={setLastAnswer}
           useTimer={useTimer}
+          changeInput={changeInput}
+          inputUser={inputUser}
+          useKeyboard={useKeyboard}
         />
       ) : (
         <CurrentResult
