@@ -18,7 +18,7 @@ const Input = styled.input`
   max-width: 64px;
   text-align: center;
   margin-left: 8px;
-  padding: 4px 16px;
+  padding: 4px 8px;
   border-radius: 4px;
 `;
 
@@ -38,7 +38,6 @@ const Grid = styled.div`
   padding: 0 16px;
   display: grid;
   grid-template-columns: 3fr 1fr;
-  /* flex-direction: row; */
   justify-content: space-around;
   align-items: center;
 `;
@@ -53,12 +52,15 @@ function Settings({
   multiplicationRange,
   useKeyboard,
   setUseKeyboard,
+  setAdditionPrecent,
+  additionPrecent,
 }) {
   function save() {
     const obj = {
       additionRange: additionRange,
       multiplicationRange: multiplicationRange,
       useTimer: useTimer,
+      additionPrecent: additionPrecent,
       useKeyboard: useKeyboard,
     };
     localStorage.setItem("settings", JSON.stringify(obj));
@@ -105,6 +107,15 @@ function Settings({
           />
         </Grid>
         <Grid>
+          <label htmlFor="additionPrecent">Procent działań z dodawniem: </label>
+          <Input
+            id="additionPrecent"
+            type="number"
+            value={additionPrecent}
+            onChange={(e) => setAdditionPrecent(e.target.value)}
+          />
+        </Grid>
+        <Grid>
           <div>Użyć klawiatury: </div>
           <CheckBox
             type="checkbox"
@@ -113,7 +124,6 @@ function Settings({
             onChange={() => setUseKeyboard((prevState) => !prevState)}
           />
         </Grid>
-
         <Div>
           <SButton fiolet onClick={save}>
             Zapisz

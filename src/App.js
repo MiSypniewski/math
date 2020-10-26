@@ -20,8 +20,9 @@ function App() {
   const [countCorrectAnswer, setCountCorrectAnswer] = useState(0);
   const [countWrongAnswer, setCountWrongAnswer] = useState(0);
   const [additionRange, setAdditionRange] = useState(100);
+  const [additionPrecent, setAdditionPrecent] = useState(50);
   const [multiplicationRange, setMultiplicationRange] = useState(10);
-  const [tasksTable, setTasksTable] = useState(generateTasks(additionRange, multiplicationRange));
+  const [tasksTable, setTasksTable] = useState(generateTasks(additionRange, multiplicationRange, additionPrecent));
   const [answerTable, setAnswerTable] = useState([]);
   const [currentLesson, setCurrentLesson] = useState(0);
 
@@ -123,6 +124,7 @@ function App() {
       setAdditionRange(Number(settings.additionRange));
       setMultiplicationRange(Number(settings.multiplicationRange));
       setTimer(Number(settings.useTimer));
+      setAdditionPrecent(Number(settings.additionPrecent));
       setUseKeyboard(settings.useKeyboard);
     }
   }, []);
@@ -162,6 +164,8 @@ function App() {
             multiplicationRange={multiplicationRange}
             useKeyboard={useKeyboard}
             setUseKeyboard={setUseKeyboard}
+            setAdditionPrecent={setAdditionPrecent}
+            additionPrecent={additionPrecent}
           />
         ) : null}
       </ThemeProvider>
