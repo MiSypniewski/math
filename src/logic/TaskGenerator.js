@@ -42,10 +42,24 @@ function answerGenerator(trueAnswer) {
   return shuffle(tmpArray);
 }
 
-export function generateTasks(additionRange, multiplicationRange) {
+function draw() {
+  return Math.floor(Math.random() * 2 + 1);
+}
+
+export function generateTasks(additionRange, multiplicationRange, precent) {
   const TaskArray = [];
   for (let i = 0; i < 10; i++) {
-    const jakieZadanie = Math.floor(Math.random() * 4 + 1);
+    const random = Math.floor(Math.random() * 100 + 1);
+
+    let jakieZadanie = 1;
+    if (random <= precent) {
+      draw() === 1 ? (jakieZadanie = 1) : (jakieZadanie = 2);
+    } else {
+      draw() + 2 === 3 ? (jakieZadanie = 3) : (jakieZadanie = 4);
+    }
+
+    //tak było do teraz
+    // const jakieZadanie = Math.floor(Math.random() * 4 + 1);
 
     switch (jakieZadanie) {
       case 1:
