@@ -17,7 +17,7 @@ const Div = styled.div`
 const Input = styled.input`
   max-width: 64px;
   text-align: center;
-  margin-left: 8px;
+  margin: 0 auto;
   padding: 4px 8px;
   border-radius: 4px;
 `;
