@@ -5,6 +5,7 @@ import { variables } from "../variables/variables";
 
 const Wrapper = styled.div`
   width: 95%;
+  max-width: 416px;
   margin: 32px auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
