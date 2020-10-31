@@ -7,6 +7,7 @@ import Button from "./../components/Button";
 const Wrapper = styled.div`
   width: 95%;
   margin: 32px auto;
+  max-width: 768px;
 `;
 
 const Div = styled.div`
@@ -26,6 +27,7 @@ const CheckBox = styled.input`
   height: 24px;
   width: 24px;
   margin: 0 auto;
+  cursor: pointer;
 `;
 
 const SButton = styled(Button)`

@@ -7,6 +7,7 @@ const LeftDiv = styled.div`
   width: 64px;
   text-align: center;
   font-size: ${({ theme }) => theme.fontSize.xl};
+  cursor: pointer;
 `;
 
 const RightDiv = styled.div`
