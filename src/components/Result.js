@@ -13,6 +13,7 @@ const RowWrapper = styled.div`
 
 const Div = styled.div`
   margin-top: 8px;
+  cursor: pointer;
 `;
 
 function Result({ result }) {

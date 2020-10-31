@@ -6,6 +6,7 @@ import { v4 as uuid } from "uuid";
 const Wrapper = styled.div`
   display: ${({ isVisible }) => (isVisible ? "block" : "none")};
   margin: 16px auto;
+  max-width: 410px;
 `;
 
 const ColorDiv = styled.div`
