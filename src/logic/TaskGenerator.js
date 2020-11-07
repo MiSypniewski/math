@@ -125,9 +125,15 @@ const Odejmowanie = (id, range) => {
   }
 };
 
+function IsOneOrTen(number) {
+  if (number === 1) return number + 1;
+  else if (number === 10) return number - 1;
+  else return number;
+}
+
 const Mnozenie = (id, range) => {
-  const a = Math.floor(Math.random() * 10 + 1);
-  const b = Math.floor(Math.random() * range + 1);
+  const a = IsOneOrTen(Math.floor(Math.random() * 10 + 1));
+  const b = IsOneOrTen(Math.floor(Math.random() * range + 1));
   const c = a * b;
   return {
     id,
@@ -141,8 +147,8 @@ const Mnozenie = (id, range) => {
 };
 
 function Dzielenie(id, range) {
-  const a = Math.floor(Math.random() * 10 + 1);
-  const b = Math.floor(Math.random() * range + 1);
+  const a = IsOneOrTen(Math.floor(Math.random() * 10 + 1));
+  const b = IsOneOrTen(Math.floor(Math.random() * range + 1));
   const c = a * b;
   return {
     id,
