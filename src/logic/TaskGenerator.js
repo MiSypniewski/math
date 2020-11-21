@@ -52,7 +52,7 @@ export function generateTasks(additionRange, multiplicationRange, precent) {
     const random = Math.floor(Math.random() * 100 + 1);
 
     let jakieZadanie = 1;
-    if (random <= precent) {
+    if (random <= Number(precent)) {
       draw() === 1 ? (jakieZadanie = 1) : (jakieZadanie = 2);
     } else {
       draw() + 2 === 3 ? (jakieZadanie = 3) : (jakieZadanie = 4);

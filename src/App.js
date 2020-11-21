@@ -22,7 +22,7 @@ function App() {
   const [additionRange, setAdditionRange] = useState(100);
   const [additionPrecent, setAdditionPrecent] = useState(50);
   const [multiplicationRange, setMultiplicationRange] = useState(10);
-  const [tasksTable, setTasksTable] = useState(generateTasks(additionRange, multiplicationRange, additionPrecent));
+  const [tasksTable, setTasksTable] = useState([]);
   const [answerTable, setAnswerTable] = useState([]);
   const [currentLesson, setCurrentLesson] = useState(0);
 
@@ -84,7 +84,7 @@ function App() {
     setCurrentTask(currentTask);
     setCountCorrectAnswer(0);
     setCountWrongAnswer(0);
-    setTasksTable(generateTasks(additionRange, multiplicationRange));
+    setTasksTable(generateTasks(additionRange, multiplicationRange, additionPrecent));
     setLastAnswer("");
     setCurrentLesson((prevState) => prevState + 1);
     setAnswerTable([]);
